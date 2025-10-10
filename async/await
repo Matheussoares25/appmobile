@@ -1,0 +1,22 @@
+const API_HOST ="https://dattebayo-api.onrender.com";//endereço da api que vou requisitar.
+
+export async function fetecCharacters(){ //crio uma função assincrona para fazer a requisição.
+    
+    try{
+        
+    const response = await fetch(`${API_HOST}/characters`);
+
+
+    if (!response.ok){
+        throw new Error(
+            `Erro: ${response.status} - ${response.statusText}`
+            
+        )
+    }
+    return await response.json();// transformo a resposta em json e retorno.
+    }catch(error){
+        console.error("Erro ao buscar personagens", error);
+        return [];
+
+    }
+}
